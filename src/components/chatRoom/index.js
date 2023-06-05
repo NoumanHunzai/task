@@ -27,6 +27,53 @@ const Chat = ({ userId }) => {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // const handleNotificationPermission = () => {
+  //   const permissionStatus = Notification.permission;
+  //   if (permissionStatus === "granted") {
+  //     // Permission already granted, proceed with token retrieval
+  //     getToken(messaging)
+  //       .then((currentToken) => {
+  //         // Save the token to your user's profile or database
+  //         console.log("Device token:", currentToken);
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error occurred while requesting permission:", error);
+  //       });
+  //   } else if (permissionStatus === "denied") {
+  //     // Permission blocked, inform the user
+  //     console.log(
+  //       "Notification permission blocked. Please enable it in your browser settings."
+  //     );
+  //   } else {
+  //     // Permission not yet granted, prompt the user
+  //     Notification.requestPermission()
+  //       .then((permission) => {
+  //         if (permission === "granted") {
+  //           // Permission granted, proceed with token retrieval
+  //           getToken(messaging)
+  //             .then((currentToken) => {
+  //               // Save the token to your user's profile or database
+  //               console.log("Device token:", currentToken);
+  //             })
+  //             .catch((error) => {
+  //               console.log(
+  //                 "Error occurred while requesting permission:",
+  //                 error
+  //               );
+  //             });
+  //         } else {
+  //           // Permission denied, inform the user
+  //           console.log(
+  //             "Notification permission denied. You will not receive notifications."
+  //           );
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error occurred while requesting permission:", error);
+  //       });
+  //   }
+  // };
+
   useEffect(() => {
     const messagesCollection = collection(db, "messages");
     const chatQuery = query(messagesCollection, orderBy("timestamp"));
@@ -56,6 +103,8 @@ const Chat = ({ userId }) => {
       const { title, body } = payload.notification;
       new Notification(title, { body });
     });
+
+    // handleNotificationPermission();
 
     return () => unsubscribe();
   }, []);

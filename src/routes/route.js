@@ -40,12 +40,7 @@ const Routers = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            isAuth ? "You are already login please go to home page" : <Login />
-          }
-        />
+        <Route path="/" element={<Login />} />
         <Route
           path="/home"
           element={isAuth ? <Home /> : "Sorry You Are Not Login"}
