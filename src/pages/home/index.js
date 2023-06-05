@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Typography, Button, Box } from "@mui/material";
 import { styled } from "@mui/system";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 
 const RootContainer = styled(Container)(({ theme }) => ({
@@ -46,9 +46,11 @@ const Home = () => {
         <Description variant="h5">
           Discover the amazing features of our platform.
         </Description>
-        <ActionButton variant="contained" color="primary" size="large">
-          Get Started
-        </ActionButton>
+        <Link to="/chat">
+          <ActionButton variant="contained" color="primary" size="large">
+            Get Started Chat
+          </ActionButton>
+        </Link>
       </RootContainer>
     </>
   );
