@@ -84,7 +84,10 @@ const Chat = ({ userId }) => {
     });
 
     // Request permission for notifications
-    getToken(messaging)
+    getToken(messaging, {
+      vapidKey:
+        "BMWxu8--wBqOpMiibRKBjdf85zCuG-vOWTfRlM1nHwWabmKiUagEiFQdECZvaB0TuQMOLbgT9IZhnlVmuTV-3Pw",
+    })
       .then((currentToken) => {
         if (currentToken) {
           console.log("Device token:", currentToken);
